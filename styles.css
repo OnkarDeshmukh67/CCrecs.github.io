@@ -1,6 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+
+  overflow: hidden;
 }
 
 .gameTitle{
@@ -16,6 +18,13 @@
   background-image: linear-gradient(#87CBB9 , #569DAA , #577D86);
 }
 
+#score_card{
+  font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
+  font-size: 20px;
+
+  color: red;
+}
+
 .gameHolder{
   display: flex;
   align-items: center;
@@ -28,20 +37,26 @@
 }
 
 .playArea{
-  position: fixed;
   bottom: 50px;
 
   min-width: 500px;
   min-height: 500px;
 
   background-image: linear-gradient(#87CBB9 , #569DAA , #577D86);
-  /* box-shadow: 0 0  50px 15px white; */
 
   display: grid;
   grid-template-columns: repeat(20 , 1fr);
   grid-template-rows: repeat(20 , 1fr);
 }
 
+.gameOver{
+  box-shadow: 0 0 10px red;
+}
+
 .playArea div {
   border: 1px solid black;
+}
+
+.playArea #food {
+  border-radius: 50%;
 }
