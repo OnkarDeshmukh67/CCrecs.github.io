@@ -2,6 +2,9 @@
 
 let arena = document.querySelector('.playArea');
 
+
+let gameOver = false;
+
 // DIRECTION OBJECT
 
 var direction = [
@@ -149,6 +152,81 @@ window.addEventListener('keydown' , (e) => {
     snakeArray.push(body);
   }
 
+
+//  GAMEOVER CONDITIONS
+
+function gameOverCheck () {
+
+  if (snakeArray[0].x - direction[0].x === 21 || snakeArray[0].y - direction[0].y === 21 || snakeArray[0].x - direction[0].x === 0 ||      snakeArray[0].y - direction[0].y === 0) {
+    gameOver = true;
+    resetGame (gameOver);
+
+    glowRed();
+    return;
+  } 
+  else {
+
+  for (let i = 0; i <snakeArray.length; i++) {
+    if (i === 0) {
+      continue;
+    } 
+    else if (snakeArray[0].x === snakeArray[i].x && snakeArray[0].y === snakeArray[i].y) {
+      gameOver = true;     
+      resetGame (gameOver);
+
+      glowRed();
+   }
+  }
+
+ }
+}
+
+// ANIMATE PLAY AREA ON GAMEOVER
+
+function glowRed () {
+  arena.classList.add('gameOver');
+  setTimeout(() => {
+    arena.classList.remove('gameOver');
+  }, 50);
+}
+
+//  RESET FUNCTION 
+
+function resetGame (gameState) {
+  if (gameState === true) {
+    
+    gameState = false;
+    arena.innerHTML = '';
+
+    snakeArray = [
+      {
+        x : 5,
+        y : 5
+      },
+    ] 
+    
+    direction[0].x = 0;
+    direction[0].y = 0;
+
+    showSnake ();
+    follow ();
+    randomFood ();
+  
+    foodEaten ();
+  }
+}
+
+// DISPLAY THE SCORE
+
+let lastScore;
+
+function showScore () { 
+  lastScore = snakeArray.length - 1;
+  let value = snakeArray.length - 1; 
+  let score = document.getElementById('score_value'); 
+  score.innerHTML = (value);
+}
+
 // FPS GENERATOR
 
 const setSpeed = 0.1;
@@ -163,14 +241,17 @@ function motion (timelap) {
   if (interval < setSpeed) {
     return;
   }
-
+    
   showSnake ();
   follow ();
   randomFood ();
-
+  
   foodEaten ();
+  showScore ();
+  
+  gameOverCheck();  
 
   oldTime = timelap
 }
 
-window.requestAnimationFrame(motion)
+window.requestAnimationFrame(motion);
