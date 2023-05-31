@@ -34,7 +34,24 @@
   animation: eat_animation 500ms ease-out 0s infinite forwards both;
 }
 
-#score_card{
+.score_card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.score{
+  padding: 0 10px 0 10px;
+
+  font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
+  font-size: 20px;
+
+  color: red;
+}
+
+.score span{
+  padding: 0 10px 0 10px;
+
   font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
   font-size: 20px;
 
@@ -118,6 +135,16 @@
 
 #right{
   box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+.under_title{
+  display: none;
+  font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
+  font-size: 6vw;
+  color: blue;
+
+  align-items: center;
+  text-align: center;
 }
 
 .eatAnimation{
