@@ -1,4 +1,5 @@
-// CUSTOM CURSOR
+// CUSTOM CURSOR AND HISS AUDIO
+  let hiss = new Audio('audio/snake_hiss.mp3');
 
   let cursor = document.querySelector('.snake_cursor');
 
@@ -7,11 +8,14 @@
   })
 
   window.addEventListener('click' , () => {
+    hiss.playbackRate = '2.5';
+    hiss.play();
     cursor.classList.add('eatAnimation');
     setTimeout(() => {
       cursor.classList.remove('eatAnimation');
     }, 110);
   }) 
+
 
 // ADDING ANIMATION TO BUTTONS ON CLICK
 
