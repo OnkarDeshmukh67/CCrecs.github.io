@@ -1,3 +1,9 @@
+@media screen and (max-width: 1000px){
+  #gameName{
+    font-size: 5vw;
+  }
+}
+
 @media screen and (max-width: 750px){
   .gameTitle{
     height: 17vw;
@@ -12,13 +18,7 @@
 
 @media screen and (max-width: 500px){
   #gameName{
-    display: none;
-  }
-  #score_card{
-    font-size: 40px;
-  }
-  #score_value{
-    font-size: 40px;
+    font-size: 4vw;
   }
 }
 
@@ -27,4 +27,14 @@
     height: 90vw;
     width: 90vw; 
   }
+  .score{
+    font-size: 5vw;
+  }
+  #gameName{
+    display: none;
+  }
+  .under_title{
+    display: block;
+  }
+
 }
