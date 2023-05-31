@@ -1,3 +1,32 @@
+// CUSTOM CURSOR
+
+  let cursor = document.querySelector('.snake_cursor');
+
+  window.addEventListener('mousemove' , e => {
+    cursor.setAttribute('style' , 'top : ' + (e.pageY + 5) + 'px; left : ' + (e.pageX + 5) + 'px;');
+  })
+
+  window.addEventListener('click' , () => {
+    cursor.classList.add('eatAnimation');
+    setTimeout(() => {
+      cursor.classList.remove('eatAnimation');
+    }, 110);
+  }) 
+
+// ADDING ANIMATION TO BUTTONS ON CLICK
+
+let gameButtons = document.querySelectorAll('.buttons');
+
+gameButtons.forEach( el => {
+  el.addEventListener('click' , () =>{
+    el.classList.add('clickAnimation')
+
+    setTimeout(() => {
+    el.classList.remove('clickAnimation')
+  }, 850);
+  });
+})
+
 // FETCHING THE PLAY AREA
 
 let arena = document.querySelector('.playArea');
@@ -13,6 +42,11 @@ var direction = [
     y : 0
   }
 ]
+
+
+// SET THE INITIAL SPEED OF THE GAME
+
+var setSpeed = 0.25;
 
 // SNAKE ARRAY and FOLLOW ARRAY
 
@@ -92,7 +126,7 @@ function randomFood () {
 }
 
 
-// DIRECTION CONTROLLER
+// DIRECTION CONTROLLER FOR KEYBOARD DEVICES
 
 window.addEventListener('keydown' , (e) => {
   
@@ -132,6 +166,30 @@ window.addEventListener('keydown' , (e) => {
   }  
 });
 
+
+// DIRECTION CONTROLLER FOR NON-KEYBOARD DEVICES
+
+  function left () {
+    direction[0].x = -1;
+    direction[0].y = 0;
+  }
+
+  function up () {
+    direction[0].x = 0;
+    direction[0].y = -1;
+  }
+
+  function down () {
+    direction[0].x = 0;
+    direction[0].y = 1;
+  }
+
+  function right () {
+    direction[0].x = 1;
+    direction[0].y = 0;
+  }
+
+
 // FUNCTION TO CHECK IF FOOD IS EATEN 
 
   function foodEaten () {
@@ -150,6 +208,14 @@ window.addEventListener('keydown' , (e) => {
     let body = {};
 
     snakeArray.push(body);
+
+    if (setSpeed>=0.15 && setSpeed<=0.25) {
+      setSpeed -= (snakeArray.length/500);
+    } else if (setSpeed>=0.1 && setSpeed<0.15) {
+      setSpeed -= (snakeArray.length/1000);
+    } else {
+      setSpeed = 0.1;
+    }
   }
 
 
@@ -197,6 +263,7 @@ function resetGame (gameState) {
     
     gameState = false;
     arena.innerHTML = '';
+    setSpeed = 0.25;
 
     snakeArray = [
       {
@@ -229,7 +296,7 @@ function showScore () {
 
 // FPS GENERATOR
 
-const setSpeed = 0.1;
+
 var oldTime = 0;
 
 function motion (timelap) {
@@ -255,3 +322,4 @@ function motion (timelap) {
 }
 
 window.requestAnimationFrame(motion);
+
