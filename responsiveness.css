@@ -1,0 +1,30 @@
+@media screen and (max-width: 750px){
+  .gameTitle{
+    height: 17vw;
+  }
+}
+
+@media screen and (max-width: 700px){
+  #gameName{
+    font-size: 5vw;
+  }
+}
+
+@media screen and (max-width: 500px){
+  #gameName{
+    display: none;
+  }
+  #score_card{
+    font-size: 40px;
+  }
+  #score_value{
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .playArea{
+    height: 90vw;
+    width: 90vw; 
+  }
+}
