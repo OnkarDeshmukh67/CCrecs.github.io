@@ -46,7 +46,7 @@
   font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
   font-size: 20px;
 
-  color: red;
+  color: #FFD93D;
 }
 
 .score span{
@@ -55,7 +55,7 @@
   font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
   font-size: 20px;
 
-  color: red;
+  color: #2D2727;
 }
 
 .gameHolder{
@@ -148,18 +148,22 @@
 }
 
 .eatAnimation{
+  display: block;
   animation: eatAnimation 100ms ease 0s 1 normal both;
 }
 
 @keyframes eatAnimation {
   0%{
     transform: translateX(0);
+    opacity: 1;
   }
   50%{
     transform: translateX(-20px);
+    opacity: 1;
   }
   100%{
     transform: translateX(0);
+    opacity: 1;
   }
 }
 
