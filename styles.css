@@ -3,6 +3,20 @@
   padding: 0;
 
   overflow: hidden;
+  cursor: none;
+}
+
+/* STYLING THE CUSTOM SNAKE CURSOR */
+
+.snake_cursor{
+  background-image: url('images/snake_cursor.png');
+  background-repeat: no-repeat;
+  position: absolute;
+  z-index: 999;
+
+  height: 25px;
+  width: 50px;
+  border:  none;
 }
 
 .gameTitle{
@@ -11,11 +25,13 @@
 
   font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
   font-size: 50px;
-  color: blue;
+  color: blue; 
 
   text-align: center;
 
   background-image: linear-gradient(#87CBB9 , #569DAA , #577D86);
+
+  animation: eat_animation 500ms ease-out 0s infinite forwards both;
 }
 
 #score_card{
@@ -26,9 +42,11 @@
 }
 
 .gameHolder{
+  background-image: linear-gradient(#B9EDDD , #87CBB9, #569DAA);
+
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   height: 100vh;
   width: 100vw;
@@ -37,10 +55,9 @@
 }
 
 .playArea{
-  bottom: 50px;
-
-  min-width: 500px;
-  min-height: 500px;
+  margin-top: 10px;
+  width: 450px;
+  height: 450px;
 
   background-image: linear-gradient(#87CBB9 , #569DAA , #577D86);
 
@@ -59,4 +76,78 @@
 
 .playArea #food {
   border-radius: 50%;
+}
+
+.buttons_box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+}
+
+.buttons{
+  margin: 0 10px 0 10px;
+  min-height: 50px;
+  min-width: 50px;
+
+  background-color: rgba(0, 0, 0, 1);
+
+  border-radius: 50%;
+  border: 2px solid white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'DotGothic16', sans-serif , 'Port Lligat Sans', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+#left{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+#top{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+#bottom{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+#right{
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+.eatAnimation{
+  animation: eatAnimation 100ms ease 0s 1 normal both;
+}
+
+@keyframes eatAnimation {
+  0%{
+    transform: translateX(0);
+  }
+  50%{
+    transform: translateX(-20px);
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+.clickAnimation{
+  animation: clickAnimation 200ms ease 0s 1 normal both;
+}
+
+@keyframes clickAnimation {
+  0%{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  }
+  50%{
+    box-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  }
+  100%{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+  }
 }
