@@ -258,6 +258,9 @@ function glowRed () {
 
 //  RESET FUNCTION 
 
+let lastScore = 0;
+let bestScore = 0;
+
 function resetGame (gameState) {
   if (gameState === true) {
     
@@ -265,6 +268,8 @@ function resetGame (gameState) {
     arena.innerHTML = '';
     setSpeed = 0.25;
 
+    lastScore = snakeArray.length - 1;
+    
     snakeArray = [
       {
         x : 5,
@@ -274,25 +279,43 @@ function resetGame (gameState) {
     
     direction[0].x = 0;
     direction[0].y = 0;
-
+    
     showSnake ();
     follow ();
     randomFood ();
-  
+    
     foodEaten ();
   }
 }
 
 // DISPLAY THE SCORE
 
-let lastScore;
+let lScore = document.getElementById('last_score_value');
+let score = document.getElementById('score_value');
+let best = document.getElementById('best_score_value');
 
-function showScore () { 
-  lastScore = snakeArray.length - 1;
+let Score = 0;
+
+function showCurrentScore () { 
+  Score = snakeArray.length - 1;
   let value = snakeArray.length - 1; 
-  let score = document.getElementById('score_value'); 
+ 
   score.innerHTML = (value);
 }
+
+function showLastScore (gameState) {
+  if (gameState === true) {
+    lScore.innerHTML = lastScore; 
+  } 
+}
+
+function showBestScore () {
+  if (lastScore > bestScore) {
+    bestScore = lastScore;
+    best.innerHTML = bestScore;
+  }
+}
+
 
 // FPS GENERATOR
 
@@ -314,7 +337,9 @@ function motion (timelap) {
   randomFood ();
   
   foodEaten ();
-  showScore ();
+  showCurrentScore ();
+  showLastScore (gameOver);
+  showBestScore ();
   
   gameOverCheck();  
 
@@ -322,4 +347,3 @@ function motion (timelap) {
 }
 
 window.requestAnimationFrame(motion);
-
