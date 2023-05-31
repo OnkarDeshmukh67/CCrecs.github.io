@@ -16,11 +16,15 @@
 </head>
 <body>
 
+  <!-- CUSTOM SNAKE CURSOR -->
+
+  <div class="snake_cursor"></div>
+
   <!-- GAME TITLE -->
 
   <div class="gameTitle">
-    <p>Snake Game</p>
-    <p id="score_card"> Score : <span id="score_value"></span>
+    <p id="gameName">Snake Game</p>
+    <p id="score_card"> Score : <span id="score_value"></span></p>
   </div>
 
   <!-- GAME ARENA -->
@@ -28,7 +32,13 @@
 <div class="gameHolder">
   
   <div id="playArea" class="playArea">
-    
+  </div>
+
+  <div class="buttons_box">
+    <div class="buttons" id="left" onclick="left()">L</div>
+    <div class="buttons" id="top" onclick="up()">U</div>
+    <div class="buttons" id="bottom" onclick="down()">D</div>
+    <div class="buttons" id="right" onclick="right()">R</div>
   </div>
 
 </div>
