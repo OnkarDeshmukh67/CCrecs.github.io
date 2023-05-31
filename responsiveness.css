@@ -2,6 +2,9 @@
   #gameName{
     font-size: 5vw;
   }
+  .snake_cursor{
+    opacity: 0;
+  }
 }
 
 @media screen and (max-width: 750px){
