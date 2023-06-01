@@ -1,5 +1,6 @@
 // CUSTOM CURSOR AND HISS AUDIO
   let hiss = new Audio('audio/snake_hiss.mp3');
+  let game_over = new Audio('audio/game_over.mp3');
 
   let cursor = document.querySelector('.snake_cursor');
 
@@ -254,6 +255,8 @@ function gameOverCheck () {
 // ANIMATE PLAY AREA ON GAMEOVER
 
 function glowRed () {
+  game_over.playbackRate = '1';
+  game_over.play();
   arena.classList.add('gameOver');
   setTimeout(() => {
     arena.classList.remove('gameOver');
